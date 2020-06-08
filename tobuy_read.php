@@ -154,7 +154,6 @@ if ($status == false) {
 <body>
   <fieldset>
     <legend>お買い物リスト（一覧画面）</legend>
-    <a href="tobuy_input.php">入力画面</a>
 
 
 
@@ -176,7 +175,7 @@ if ($status == false) {
         <thead>
           <tr>
             <!-- <th>どこで買う</th> -->
-            <th>アイテム</th>
+            <th>商品</th>
             <th>優先度</th>
             <th></th>
             <th></th>
@@ -194,7 +193,7 @@ if ($status == false) {
         <thead>
           <tr>
             <!-- <th>どこで買う</th> -->
-            <th>アイテム</th>
+            <th>商品</th>
             <th>優先度</th>
             <th></th>
             <th></th>
@@ -242,6 +241,8 @@ if ($status == false) {
       document.getElementById("defaultOpen").click();
     </script>
 
+  </fieldset>
+  <a href="tobuy_input.php">入力画面</a>
 
 
 </body>

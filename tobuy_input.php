@@ -44,9 +44,9 @@
       <div>
         <button class="register">登録</button>
       </div>
-      <a href="tobuy_read.php">一覧画面</a>
 
     </fieldset>
+    <a href="tobuy_read.php">一覧画面</a>
 
   </form>
 
