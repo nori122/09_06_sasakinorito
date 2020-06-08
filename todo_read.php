@@ -1,18 +1,9 @@
 <?php
+include('functions.php');
+
 // DB接続の設定
 // DB名は`gsacf_x00_00`にする
-$dbn = 'mysql:dbname=YOUR_DB_NAME;charset=utf8;port=3306;host=localhost';
-$user = 'root';
-$pwd = '';
-
-try {
-  // ここでDB接続処理を実行する
-  $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-  // DB接続に失敗した場合はここでエラーを出力し，以降の処理を中止する
-  echo json_encode(["db error" => "{$e->getMessage()}"]);
-  exit();
-}
+$pdo = connect_to_db();
 
 // データ取得SQL作成
 $sql = 'SELECT * FROM todo_table';
@@ -36,9 +27,14 @@ if ($status == false) {
   // `.=`は後ろに文字列を追加する，の意味
   foreach ($result as $record) {
     $output .= "<tr>";
-    $output .= "<td>{$record["deadline"]}</td>";
-    $output .= "<td>{$record["todo"]}</td>";
+    $output .= "<td style='padding:0 20px'>{$record["deadline"]}</td>";
+    $output .= "<td style='padding:0 20px'>{$record["todo"]}</td>";
+    $output .= "<td style='padding:0 20px'>{$record["created_at"]}</td>";
+    $output .= "<td style='padding:0 20px'>{$record["updated_at"]}</td>";
     // edit deleteリンクを追加
+    $output .= "<td><a href='todo_edit.php?id={$record["id"]}'>edit</a></td>";
+    $output .= "<td><a href='todo_delete.php?id={$record["id"]}'>delete</a></td>";
+
 
     $output .= "</tr>";
   }
@@ -66,8 +62,10 @@ if ($status == false) {
         <tr>
           <th>deadline</th>
           <th>todo</th>
-          <th></th>
-          <th></th>
+          <th>created_at</th>
+          <th>updated_at</th>
+          <th>更新</th>
+          <th>削除</th>
         </tr>
       </thead>
       <tbody>

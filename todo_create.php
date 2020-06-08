@@ -21,7 +21,7 @@ $deadline = $_POST['deadline'];
 
 // DB接続の設定
 // DB名は`gsacf_x00_00`にする
-$dbn = 'mysql:dbname=YOUR_DB_NAME;charset=utf8;port=3306;host=localhost';
+$dbn = 'mysql:dbname=gsacf_l03_06;charset=utf8;port=3306;host=localhost';
 $user = 'root';
 $pwd = '';
 

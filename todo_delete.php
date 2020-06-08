@@ -5,18 +5,21 @@
 // exit();
 
 // 関数ファイルの読み込み
-
+include('functions.php');
 
 // 送信データ受け取り
-
+$id = $_GET['id'];
 
 // DB接続
+$pdo = connect_to_db();
 
+// DELETE文を作成
+$sql = "DELETE from todo_table WHERE id =:id";
 
-// DELETE文を作成&実行
-$sql = "";
-
-
+// SQL準備&実行
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+$status = $stmt->execute();
 
 
 // データ登録処理後
@@ -27,6 +30,5 @@ if ($status == false) {
   exit();
 } else {
   // 正常にSQLが実行された場合は一覧ページファイルに移動し，一覧ページの処理を実行する
-
-
+  header('Location:todo_read.php');
 }
