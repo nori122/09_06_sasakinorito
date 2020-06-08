@@ -59,10 +59,20 @@ if ($status == false) {
         買うもの: <input type="text" name="item" value="<?= $record["item"] ?>">
       </div>
       <div>
-        どこで買う: <input type="text" name="store" value="<?= $record["store"] ?>">
+        どこで買う: <select name="store" value="<?= $record["store"] ?>">
+          <option selected disabled></option>
+          <option>スーパー</option>
+          <option>ドラッグストア</option>
+          <option>薬局</option>
+        </select>
       </div>
       <div>
-        優先度: <input type="text" name="priority" value="<?= $record["priority"] ?>">
+        優先度: <select name="priority" value="<?= $record["priority"] ?>">>
+          <option selected disabled></option>
+          <option>ASAP</option>
+          <option>安いのがあれば</option>
+          <option>検討中</option>
+        </select>
       </div>
       <div>
         <input type="hidden" name="id" value="<?= $record["id"] ?>">

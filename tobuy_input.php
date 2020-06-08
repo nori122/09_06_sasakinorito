@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>お買い物リスト（入力画面）</title>
 </head>
@@ -14,11 +15,13 @@
       <a href="tobuy_read.php">一覧画面</a>
 
       <div>
-        買うもの: <input type="text" name="item">
+        <label>買うもの</label>
+        <input class="form" type="text" name="item">
       </div>
 
       <div>
-        どこで買う: <select name="store">
+        <label>どこで買う</label>
+        <select class="form" name="store">
           <option selected disabled></option>
           <option>スーパー</option>
           <option>ドラッグストア</option>
@@ -27,7 +30,8 @@
       </div>
 
       <div>
-        優先度：<select name="priority">
+        <label>どこで買う</label>
+        <select class="form" name="priority">
           <option selected disabled></option>
           <option>ASAP</option>
           <option>安いのがあれば</option>
