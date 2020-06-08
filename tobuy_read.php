@@ -40,8 +40,8 @@ if ($status == false) {
     $s_output .= "<td class='itemColumn'>{$record["item"]}</td>";
     $s_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
     // edit deleteリンクを追加
-    $s_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'>edit</a></td>";
-    $s_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'>delete</a></td>";
+    $s_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit'></a></td>";
+    $s_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt'></i></a></td>";
     $s_output .= "</tr>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -82,8 +82,8 @@ if ($status == false) {
     $d_output .= "<td class='itemColumn'>{$record["item"]}</td>";
     $d_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
     // edit deleteリンクを追加
-    $d_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'>edit</a></td>";
-    $d_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'>delete</a></td>";
+    $d_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit'></a></td>";
+    $d_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt'></i></a></td>";
     $d_output .= "</tr>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -124,8 +124,10 @@ if ($status == false) {
     $n_output .= "<td class='itemColumn'>{$record["item"]}</td>";
     $n_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
     // edit deleteリンクを追加
-    $n_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'>edit</a></td>";
-    $n_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'>delete</a></td>";
+    $n_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit'></i>
+
+</a></td>";
+    $n_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt'></i></a></td>";
     $n_output .= "</tr>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -142,6 +144,8 @@ if ($status == false) {
 <html lang="ja">
 
 <head>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>お買い物リスト（一覧画面）</title>
@@ -239,55 +243,6 @@ if ($status == false) {
     </script>
 
 
-    <style>
-      .tab {
-        overflow: hidden;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-      }
-
-      .tab button {
-        background-color: inherit;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 14px 16px;
-        transition: 0.3s;
-        font-size: 15px;
-      }
-
-      .tab button:hover {
-        background-color: #ddd;
-      }
-
-      .tab button.active {
-        background-color: #ccc;
-      }
-
-      .tabcontent {
-        display: none;
-        padding: 6px 24px;
-        border: 1px solid #ccc;
-        border-top: none;
-      }
-
-      th {
-        text-align: left;
-      }
-
-      td {
-        font-size: 14px;
-      }
-
-      .itemColumn {
-        width: 8.5rem;
-      }
-
-      .priorityColumn {
-        width: 4.5rem;
-      }
-    </style>
 
 </body>
 

@@ -45,6 +45,8 @@ if ($status == false) {
 <html lang="ja">
 
 <head>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>お買い物リスト（編集画面）</title>
@@ -70,7 +72,7 @@ if ($status == false) {
         優先度: <select name="priority" value="<?= $record["priority"] ?>">>
           <option selected disabled></option>
           <option>ASAP</option>
-          <option>安いのがあれば</option>
+          <option>安ければ</option>
           <option>検討中</option>
         </select>
       </div>

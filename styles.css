@@ -1,4 +1,27 @@
-  
+/* 全体 */
+
+body{
+    background-color: #171a32;
+    /* background-image: url("background.jpg"); */
+    
+    color: whitesmoke;
+    font-family :sans-serif,serif;
+    line-height:1.5;
+}
+
+.input{
+    width: 80%;
+    height: 2.5rem;
+}
+
+a {
+  text-decoration:none;
+}
+
+a:visited {
+  color:silver;
+}
+
   /* 主にinput */
   .form {
     -webkit-appearance: none;
@@ -8,6 +31,21 @@
     -webkit-appearance: none;
   }
 
+  select{
+      height:2.5rem;
+      margin: 5px 0;
+      text-align: center;
+      margin: 20px 20px 10px 0;
+  }
+
+  .container{
+      display:flex;
+  }
+
+  .register{
+      width:80%;
+      height:30px
+  }
 
 
   /* 主にRead */
@@ -24,7 +62,7 @@
         border: none;
         outline: none;
         cursor: pointer;
-        padding: 14px 16px;
+        padding: 8px 8px;
         transition: 0.3s;
         font-size: 15px;
       }
