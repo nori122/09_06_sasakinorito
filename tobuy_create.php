@@ -21,7 +21,7 @@ $item = $_POST['item'];
 $store = $_POST['store'];
 $priority = $_POST['priority'];
 
-// DB接続の設定
+// DB接続の設定 
 // DB名は`gsacf_x00_00`にする
 $dbn = 'mysql:dbname=gsacf_l03_06;charset=utf8;port=3306;host=localhost';
 $user = 'root';

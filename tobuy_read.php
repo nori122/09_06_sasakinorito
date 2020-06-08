@@ -1,12 +1,18 @@
 <?php
 include('functions.php');
 
+
+/* ---------------------------------- */
+/* Case1:supermarket                  */
+/* ---------------------------------- */
+
 // DB接続の設定
 // DB名は`gsacf_x00_00`にする
 $pdo = connect_to_db();
 
+
 // データ取得SQL作成
-$sql = 'SELECT * FROM tobuy_table';
+$sql = 'SELECT * FROM tobuy_table WHERE store="スーパー"';
 
 // SQL準備&実行
 $stmt = $pdo->prepare($sql);
@@ -21,29 +27,116 @@ if ($status == false) {
 } else {
   // 正常にSQLが実行された場合は入力ページファイルに移動し，入力ページの処理を実行する
   // fetchAll()関数でSQLで取得したレコードを配列で取得できる
-  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // データの出力用変数（初期値は空文字）を設定
-  $output = "";
-  // var_dump($result);
+  $s_result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // データの出力用変数（初期値は空文字）を設定
+  $s_output = "";
+  // var_dump($s_result);
   // exit();
-  // <tr><td>deadline</td><td>tobuy</td><tr>の形になるようにforeachで順番に$outputへデータを追加
+
+  // <tr><td>deadline</td><td>tobuy</td><tr>の形になるようにforeachで順番に$s_outputへデータを追加
   // `.=`は後ろに文字列を追加する，の意味
-  foreach ($result as $record) {
-    $output .= "<tr>";
-    $output .= "<td style='padding:0 20px'>{$record["store"]}</td>";
-    $output .= "<td style='padding:0 20px'>{$record["item"]}</td>";
-    $output .= "<td style='padding:0 20px'>{$record["priority"]}</td>";
+  foreach ($s_result as $record) {
+    $s_output .= "<tr>";
+    // $s_output .= "<td class='column'>{$record["store"]}</td>";
+    $s_output .= "<td class='itemColumn'>{$record["item"]}</td>";
+    $s_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
     // edit deleteリンクを追加
-    $output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'>edit</a></td>";
-    $output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'>delete</a></td>";
-
-
-    $output .= "</tr>";
+    $s_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'>edit</a></td>";
+    $s_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'>delete</a></td>";
+    $s_output .= "</tr>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
   // 今回は以降foreachしないので影響なし
   unset($record);
 }
+
+/* ---------------------------------- */
+/* Case2:drugstore                   */
+/* ---------------------------------- */
+
+// データ取得SQL作成
+$sql = 'SELECT * FROM tobuy_table WHERE store="ドラッグストア"';
+
+// SQL準備&実行
+$stmt = $pdo->prepare($sql);
+$status = $stmt->execute();
+
+// データ登録処理後
+if ($status == false) {
+  // SQL実行に失敗した場合はここでエラーを出力し，以降の処理を中止する
+  $error = $stmt->errorInfo();
+  echo json_encode(["error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  // 正常にSQLが実行された場合は入力ページファイルに移動し，入力ページの処理を実行する
+  // fetchAll()関数でSQLで取得したレコードを配列で取得できる
+  $d_result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // データの出力用変数（初期値は空文字）を設定
+  $d_output = "";
+  // var_dump($d_result);
+  // exit();
+
+  // <tr><td>deadline</td><td>tobuy</td><tr>の形になるようにforeachで順番に$d_outputへデータを追加
+  // `.=`は後ろに文字列を追加する，の意味
+  foreach ($d_result as $record) {
+    $d_output .= "<tr>";
+    // $d_output .= "<td class='column'>{$record["store"]}</td>";
+    $d_output .= "<td class='itemColumn'>{$record["item"]}</td>";
+    $d_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
+    // edit deleteリンクを追加
+    $d_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'>edit</a></td>";
+    $d_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'>delete</a></td>";
+    $d_output .= "</tr>";
+  }
+  // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
+  // 今回は以降foreachしないので影響なし
+  unset($record);
+}
+
+/* ---------------------------------- */
+/* Case3:E-commerce                   */
+/* ---------------------------------- */
+
+// データ取得SQL作成
+$sql = 'SELECT * FROM tobuy_table WHERE store="ネット"';
+
+// SQL準備&実行
+$stmt = $pdo->prepare($sql);
+$status = $stmt->execute();
+
+// データ登録処理後
+if ($status == false) {
+  // SQL実行に失敗した場合はここでエラーを出力し，以降の処理を中止する
+  $error = $stmt->errorInfo();
+  echo json_encode(["error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  // 正常にSQLが実行された場合は入力ページファイルに移動し，入力ページの処理を実行する
+  // fetchAll()関数でSQLで取得したレコードを配列で取得できる
+  $n_result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // データの出力用変数（初期値は空文字）を設定
+  $n_output = "";
+  // var_dump($n_result);
+  // exit();
+
+  // <tr><td>deadline</td><td>tobuy</td><tr>の形になるようにforeachで順番に$n_outputへデータを追加
+  // `.=`は後ろに文字列を追加する，の意味
+  foreach ($n_result as $record) {
+    $n_output .= "<tr>";
+    // $n_output .= "<td class='column'>{$record["store"]}</td>";
+    $n_output .= "<td class='itemColumn'>{$record["item"]}</td>";
+    $n_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
+    // edit deleteリンクを追加
+    $n_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'>edit</a></td>";
+    $n_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'>delete</a></td>";
+    $n_output .= "</tr>";
+  }
+  // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
+  // 今回は以降foreachしないので影響なし
+  unset($record);
+}
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -58,113 +151,144 @@ if ($status == false) {
   <fieldset>
     <legend>お買い物リスト（一覧画面）</legend>
     <a href="tobuy_input.php">入力画面</a>
-    <table>
-      <thead>
-        <tr>
-          <th>どこで買う</th>
-          <th>アイテム</th>
-          <th>優先度</th>
-          <th>更新</th>
-          <th>削除</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
-        <?= $output ?>
-      </tbody>
-    </table>
-  </fieldset>
 
 
 
 
 
-  <!-- タブ -->
+
+    <!-- タブ -->
 
 
 
-  <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'supermarket')" id="defaultOpen">スーパー</button>
-    <button class="tablinks" onclick="openCity(event, 'drugstore')">ドラッグストア</button>
-    <button class="tablinks" onclick="openCity(event, 'ecommerce')">ネット</button>
-  </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'supermarket')" id="defaultOpen">スーパー</button>
+      <button class="tablinks" onclick="openTab(event, 'drugstore')">ドラッグストア</button>
+      <button class="tablinks" onclick="openTab(event, 'ecommerce')">ネット</button>
+    </div>
 
-  <div id="supermarket" class="tabcontent">
-    <ul>
-      <li>頑張るイクメン</li>
-      <li>未経験からのプログラミング</li>
-      <li>水槽の掃除の仕方</li>
-    </ul>
-  </div>
+    <div id="supermarket" class="tabcontent">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th>どこで買う</th> -->
+            <th>アイテム</th>
+            <th>優先度</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
+          <?= $s_output ?>
+        </tbody>
+      </table>
+    </div>
 
-  <div id="drugstore" class="tabcontent">
-    <ul>
-      <li>冬休み早割まとめ</li>
-      <li>お中元早割まとめ</li>
-      <li>年賀状・・・</li>
-    </ul>
-  </div>
+    <div id="drugstore" class="tabcontent">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th>どこで買う</th> -->
+            <th>アイテム</th>
+            <th>優先度</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
+          <?= $d_output ?>
+        </tbody>
+      </table>
+    </div>
 
-  <div id="ecommerce" class="tabcontent">
-    <ul>
-      <li>黄砂情報</li>
-      <li>乾燥注意報</li>
-      <li>今年のセキセツは・・・</li>
-    </ul>
-  </div>
+    <div id="ecommerce" class="tabcontent">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th>どこで買う</th> -->
+            <th>アイテム</th>
+            <th>優先度</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
+          <?= $n_output ?>
+        </tbody>
+      </table>
+    </div>
 
-
-  <script>
-    function openCity(evt, cityName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    <script>
+      function openTab(evt, storeLocation) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(storeLocation).style.display = "block";
+        evt.currentTarget.className += " active";
       }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      document.getElementById("defaultOpen").click();
+    </script>
+
+
+    <style>
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
       }
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-    document.getElementById("defaultOpen").click();
-  </script>
 
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 15px;
+      }
 
-  <style>
-    .tab {
-      overflow: hidden;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
-    }
+      .tab button:hover {
+        background-color: #ddd;
+      }
 
-    .tab button {
-      background-color: inherit;
-      float: left;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 14px 16px;
-      transition: 0.3s;
-      font-size: 17px;
-    }
+      .tab button.active {
+        background-color: #ccc;
+      }
 
-    .tab button:hover {
-      background-color: #ddd;
-    }
+      .tabcontent {
+        display: none;
+        padding: 6px 24px;
+        border: 1px solid #ccc;
+        border-top: none;
+      }
 
-    .tab button.active {
-      background-color: #ccc;
-    }
+      th {
+        text-align: left;
+      }
 
-    .tabcontent {
-      display: none;
-      padding: 6px 24px;
-      border: 1px solid #ccc;
-      border-top: none;
-    }
-  </style>
+      td {
+        font-size: 14px;
+      }
+
+      .itemColumn {
+        width: 8.5rem;
+      }
+
+      .priorityColumn {
+        width: 4.5rem;
+      }
+    </style>
+
 </body>
 
 </html>

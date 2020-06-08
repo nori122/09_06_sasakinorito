@@ -56,7 +56,7 @@ if ($status == false) {
       <legend>お買い物リスト（編集画面）</legend>
       <a href="tobuy_read.php">一覧画面</a>
       <div>
-        アイテム: <input type="text" name="item" value="<?= $record["item"] ?>">
+        買うもの: <input type="text" name="item" value="<?= $record["item"] ?>">
       </div>
       <div>
         どこで買う: <input type="text" name="store" value="<?= $record["store"] ?>">
