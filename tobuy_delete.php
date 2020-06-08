@@ -14,7 +14,7 @@ $id = $_GET['id'];
 $pdo = connect_to_db();
 
 // DELETE文を作成
-$sql = "DELETE from todo_table WHERE id =:id";
+$sql = "DELETE from tobuy_table WHERE id =:id";
 
 // SQL準備&実行
 $stmt = $pdo->prepare($sql);
@@ -30,5 +30,5 @@ if ($status == false) {
   exit();
 } else {
   // 正常にSQLが実行された場合は一覧ページファイルに移動し，一覧ページの処理を実行する
-  header('Location:todo_read.php');
+  header('Location:tobuy_read.php');
 }

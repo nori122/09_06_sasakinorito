@@ -1,6 +1,6 @@
 <?php
 // 送信データのチェック
-var_dump($_GET);
+// var_dump($_GET);
 // exit();
 
 // 関数ファイルの読み込み
@@ -16,7 +16,7 @@ $pdo = connect_to_db();
 
 
 // データ取得SQL作成
-$sql = 'SELECT * FROM todo_table WHERE id=:id';
+$sql = 'SELECT * FROM tobuy_table WHERE id=:id';
 
 
 // SQL準備&実行
@@ -47,25 +47,28 @@ if ($status == false) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DB連携型todoリスト（編集画面）</title>
+  <title>お買い物リスト（編集画面）</title>
 </head>
 
 <body>
-  <form action="todo_update.php" method="POST">
+  <form action="tobuy_update.php" method="POST">
     <fieldset>
-      <legend>DB連携型todoリスト（編集画面）</legend>
-      <a href="todo_read.php">一覧画面</a>
+      <legend>お買い物リスト（編集画面）</legend>
+      <a href="tobuy_read.php">一覧画面</a>
       <div>
-        todo: <input type="text" name="todo" value="<?= $record["todo"] ?>">
+        アイテム: <input type="text" name="item" value="<?= $record["item"] ?>">
       </div>
       <div>
-        deadline: <input type="date" name="deadline" value="<?= $record["deadline"] ?>">
+        どこで買う: <input type="text" name="store" value="<?= $record["store"] ?>">
+      </div>
+      <div>
+        優先度: <input type="text" name="priority" value="<?= $record["priority"] ?>">
       </div>
       <div>
         <input type="hidden" name="id" value="<?= $record["id"] ?>">
       </div>
       <div>
-        <button>submit</button>
+        <button>編集完了</button>
       </div>
 
     </fieldset>

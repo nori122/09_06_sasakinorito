@@ -1,7 +1,7 @@
 <?php
 
 // 送信データのチェック
-var_dump($_POST);
+// var_dump($_POST);
 // exit();
 
 // 関数ファイルの読み込み
@@ -9,8 +9,9 @@ include('functions.php');
 
 // 送信データ受け取り
 $id = $_POST['id'];
-$todo = $_POST['todo'];
-$deadline = $_POST['deadline'];
+$item = $_POST['item'];
+$store = $_POST['store'];
+$priority = $_POST['priority'];
 
 
 
@@ -18,12 +19,13 @@ $deadline = $_POST['deadline'];
 $pdo = connect_to_db();
 
 // UPDATE文を作成
-$sql = "UPDATE todo_table SET todo=:todo, deadline=:deadline, updated_at=sysdate() Where id=:id";
+$sql = "UPDATE tobuy_table SET item=:item, store=:store, priority=:priority Where id=:id";
 
 // sql文を実行
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':todo', $todo, PDO::PARAM_STR);
-$stmt->bindValue(':deadline', $deadline, PDO::PARAM_STR);
+$stmt->bindValue(':item', $item, PDO::PARAM_STR);
+$stmt->bindValue(':store', $store, PDO::PARAM_STR);
+$stmt->bindValue(':priority', $priority, PDO::PARAM_STR);
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $status = $stmt->execute();
 
@@ -37,6 +39,6 @@ if ($status == false) {
   exit();
 } else {
   // 正常にSQLが実行された場合は一覧ページファイルに移動し，一覧ページの処理を実行する
-  header("Location:todo_read.php");
+  header("Location:tobuy_read.php");
   exit();
 }
