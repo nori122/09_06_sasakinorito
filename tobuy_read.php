@@ -82,8 +82,8 @@ if ($status == false) {
     $d_output .= "<td class='itemColumn'>{$record["item"]}</td>";
     $d_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
     // edit deleteリンクを追加
-    $d_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit'></a></td>";
-    $d_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt'></i></a></td>";
+    $d_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit my-white'></a></td>";
+    $d_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt my-white'></i></a></td>";
     $d_output .= "</tr>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -124,10 +124,10 @@ if ($status == false) {
     $n_output .= "<td class='itemColumn'>{$record["item"]}</td>";
     $n_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
     // edit deleteリンクを追加
-    $n_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit'></i>
+    $n_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit my-white'></i>
 
 </a></td>";
-    $n_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt'></i></a></td>";
+    $n_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt my-white'></i></a></td>";
     $n_output .= "</tr>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -181,6 +181,7 @@ if ($status == false) {
           <th></th>
         </tr>
       </thead>
+      <!-- <Hr> -->
       <tbody>
         <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
         <?= $s_output ?>
@@ -215,7 +216,7 @@ if ($status == false) {
       <thead>
         <tr>
           <!-- <th>どこで買う</th> -->
-          <th>アイテム</th>
+          <th>商品</th>
           <th>優先度</th>
           <th></th>
           <th></th>
