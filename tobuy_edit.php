@@ -87,7 +87,7 @@ if ($status == false) {
       </div>
 
     </fieldset>
-    <a href="tobuy_read.php">一覧画面</a>
+    <a href="tobuy_read.php">一覧画面へ</a>
 
   </form>
 

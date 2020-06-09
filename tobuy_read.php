@@ -40,8 +40,8 @@ if ($status == false) {
     $s_output .= "<td class='itemColumn'>{$record["item"]}</td>";
     $s_output .= "<td class='priorityColumn'>{$record["priority"]}</td>";
     // edit deleteリンクを追加
-    $s_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit'></a></td>";
-    $s_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt'></i></a></td>";
+    $s_output .= "<td><a href='tobuy_edit.php?id={$record["id"]}'><i class='fas fa-edit my-white'></a></td>";
+    $s_output .= "<td><a href='tobuy_delete.php?id={$record["id"]}'><i class='far fa-trash-alt my-white'></i></a></td>";
     $s_output .= "</tr>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -152,97 +152,102 @@ if ($status == false) {
 </head>
 
 <body>
-  <fieldset>
-    <legend>お買い物リスト（一覧画面）</legend>
+  <!-- <fieldset> -->
+  <legend>お買い物リスト（一覧画面）</legend>
+  <br>
 
 
 
 
 
 
-    <!-- タブ -->
+  <!-- タブ -->
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'supermarket')" id="defaultOpen">スーパー</button>
+    <button class="tablinks" onclick="openTab(event, 'drugstore')">ドラッグストア</button>
+    <button class="tablinks" onclick="openTab(event, 'ecommerce')">ネット</button>
+  </div>
 
 
+  <!-- スーパー -->
+  <div id="supermarket" class="tabcontent">
+    <table>
+      <thead>
+        <tr>
+          <!-- <th>どこで買う</th> -->
+          <th>商品</th>
+          <th>優先度</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
+        <?= $s_output ?>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="tab">
-      <button class="tablinks" onclick="openTab(event, 'supermarket')" id="defaultOpen">スーパー</button>
-      <button class="tablinks" onclick="openTab(event, 'drugstore')">ドラッグストア</button>
-      <button class="tablinks" onclick="openTab(event, 'ecommerce')">ネット</button>
-    </div>
 
-    <div id="supermarket" class="tabcontent">
-      <table>
-        <thead>
-          <tr>
-            <!-- <th>どこで買う</th> -->
-            <th>商品</th>
-            <th>優先度</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
-          <?= $s_output ?>
-        </tbody>
-      </table>
-    </div>
+  <!-- ドラッグストア -->
+  <div id="drugstore" class="tabcontent">
+    <table>
+      <thead>
+        <tr>
+          <!-- <th>どこで買う</th> -->
+          <th>商品</th>
+          <th>優先度</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
+        <?= $d_output ?>
+      </tbody>
+    </table>
+  </div>
 
-    <div id="drugstore" class="tabcontent">
-      <table>
-        <thead>
-          <tr>
-            <!-- <th>どこで買う</th> -->
-            <th>商品</th>
-            <th>優先度</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
-          <?= $d_output ?>
-        </tbody>
-      </table>
-    </div>
 
-    <div id="ecommerce" class="tabcontent">
-      <table>
-        <thead>
-          <tr>
-            <!-- <th>どこで買う</th> -->
-            <th>アイテム</th>
-            <th>優先度</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
-          <?= $n_output ?>
-        </tbody>
-      </table>
-    </div>
+  <!-- ネット -->
+  <div id="ecommerce" class="tabcontent">
+    <table>
+      <thead>
+        <tr>
+          <!-- <th>どこで買う</th> -->
+          <th>アイテム</th>
+          <th>優先度</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ここに<tr><td>deadline</td><td>tobuy</td><tr>の形でデータが入る -->
+        <?= $n_output ?>
+      </tbody>
+    </table>
+  </div>
 
-    <script>
-      function openTab(evt, storeLocation) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(storeLocation).style.display = "block";
-        evt.currentTarget.className += " active";
+  <script>
+    function openTab(evt, storeLocation) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
       }
-      document.getElementById("defaultOpen").click();
-    </script>
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(storeLocation).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+  </script>
 
-  </fieldset>
-  <a href="tobuy_input.php">入力画面</a>
+  <!-- </fieldset> -->
+  <br>
+  <a href="tobuy_input.php">新規登録画面へ</a>
 
 
 </body>

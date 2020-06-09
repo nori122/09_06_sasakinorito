@@ -23,7 +23,7 @@
         <div>
           <!-- <label>どこで買う</label> -->
           <select class="form" name="store">
-            <option class="input" selected disabled value="" style='display:none;'>どこで買う？</option>
+            <option class="input" selected disabled value="" style='display:none;'>どこで買う</option>
             <option>スーパー</option>
             <option>ドラッグストア</option>
             <option>薬局</option>
@@ -35,7 +35,7 @@
           <select class="form" name="priority">
             <option class="input" selected disabled value="" style='display:none;'>優先度</option>
             <option>ASAP</option>
-            <option>安いのがあれば</option>
+            <option>安ければ</option>
             <option>検討中</option>
           </select>
         </div>
@@ -46,7 +46,7 @@
       </div>
 
     </fieldset>
-    <a href="tobuy_read.php">一覧画面</a>
+    <a href="tobuy_read.php">一覧画面へ</a>
 
   </form>
 
