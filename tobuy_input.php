@@ -31,7 +31,7 @@
               <option class="input" selected disabled value="" style='display:none;'>どこで買う</option>
               <option>スーパー</option>
               <option>ドラッグストア</option>
-              <option>薬局</option>
+              <option>ネット</option>
             </select>
           </div>
 

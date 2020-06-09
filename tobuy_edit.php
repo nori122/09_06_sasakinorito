@@ -64,10 +64,9 @@ if ($status == false) {
           <select class="form" name="store">
             <option class="input" value="<?= $record["store"] ?>" selected disabled>どこで買う
             </option>
-            <option>スーパー
-            </option>
+            <option>スーパー</option>
             <option>ドラッグストア</option>
-            <option>薬局</option>
+            <option>ネット</option>
           </select>
         </div>
         <div>
